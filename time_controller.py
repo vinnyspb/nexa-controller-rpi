@@ -7,8 +7,8 @@ from controller_config import Config
 class TimeController:
     def __init__(self):
         self._current_date = None
-        self._civil_twilight_begin = None
-        self._civil_twilight_end = None
+        self._sunrise = None
+        self._sunset = None
         self._fetch_location()
 
     def _fetch_location(self):
@@ -56,8 +56,8 @@ class TimeController:
         if decoded_json is None or decoded_json['status'] != "OK":
             return False
 
-        self._civil_twilight_begin = self.decode_utc_time(date_str, decoded_json['results']['civil_twilight_begin'])
-        self._civil_twilight_end = self.decode_utc_time(date_str, decoded_json['results']['civil_twilight_end'])
+        self._sunrise = self.decode_utc_time(date_str, decoded_json['results']['sunrise'])
+        self._sunset = self.decode_utc_time(date_str, decoded_json['results']['sunset'])
 
         return True
 
@@ -69,8 +69,8 @@ class TimeController:
             self._current_date = current_date
 
             self.get_sunrise_sunset(current_date)
-            print "Today's civil twilight begin: " + str(self._civil_twilight_begin)
-            print "Today's civil twilight end: " + str(self._civil_twilight_end)
+            print "Today's sunrise: " + str(self._sunrise)
+            print "Today's sunset: " + str(self._sunset)
 
             current_date = datetime.now()
             lower_bound = current_date.replace(hour=Config.EARLIEST_ENABLE_HOUR,
@@ -82,11 +82,11 @@ class TimeController:
             print "Lower bound: " + str(lower_bound)
             print "Upper bound: " + str(upper_bound)
 
-            if self._civil_twilight_begin < lower_bound:
-                self._civil_twilight_begin = lower_bound
-                print "Civil twilight begin is before lower bound, using lower bound"
-            if self._civil_twilight_end > upper_bound:
-                self._civil_twilight_end = upper_bound
-                print "Civil twilight end is after upper bound, using upper bound"
+            if self._sunrise < lower_bound:
+                self._sunrise = lower_bound
+                print "Sunrise is before lower bound, using lower bound"
+            if self._sunset > upper_bound:
+                self._sunset = upper_bound
+                print "Sunset is after upper bound, using upper bound"
 
-        return self._civil_twilight_begin < current_time and current_time < self._civil_twilight_end
+        return self._sunrise < current_time and current_time < self._sunset

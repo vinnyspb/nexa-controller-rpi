@@ -7,7 +7,7 @@ for [Nexa](http://www.nexa.se/PE3-komplett-set-2.htm) remote-controlled electric
 Configuration can be done via `controller_config.py`
 
 ## Manual switch
-To perfrm manual switch on/off (e.g. to pair RPi with the outlet), use:
+To perform manual switch on/off (e.g. to pair RPi with the outlet), use:
 
 `python manual_switch.py on|off data_pin_number transmitter_code`
 
@@ -17,7 +17,7 @@ Start it using `./restart.sh`
 Log will be written to `/var/log/nexa_controller.log`
 
 ## Modules
-* **TimeController** module enables selected electric outlet between civil twilight
+* **TimeController** module enables selected electric outlet between sunrise and sunset
 for your geographical location (fetched by public IP of Raspberry Pi gateway).
 
 
