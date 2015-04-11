@@ -72,4 +72,21 @@ class TimeController:
             print "Today's civil twilight begin: " + str(self._civil_twilight_begin)
             print "Today's civil twilight end: " + str(self._civil_twilight_end)
 
+            current_date = datetime.now()
+            lower_bound = current_date.replace(hour=Config.EARLIEST_ENABLE_HOUR,
+                                               minute=Config.EARLIEST_ENABLE_MINUTE,
+                                               second=0)
+            upper_bound = current_date.replace(hour=Config.LATEST_DISABLE_HOUR,
+                                               minute=Config.LATEST_DISABLE_MINUTE,
+                                               second=0)
+            print "Lower bound: " + str(lower_bound)
+            print "Upper bound: " + str(upper_bound)
+
+            if self._civil_twilight_begin < lower_bound:
+                self._civil_twilight_begin = lower_bound
+                print "Civil twilight begin is before lower bound, using lower bound"
+            if self._civil_twilight_end > upper_bound:
+                self._civil_twilight_end = upper_bound
+                print "Civil twilight end is after upper bound, using upper bound"
+
         return self._civil_twilight_begin < current_time and current_time < self._civil_twilight_end
