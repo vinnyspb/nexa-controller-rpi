@@ -3,100 +3,73 @@ import time
 sys.path.append("/storage/.kodi/addons/python.RPi.GPIO/lib")
 import RPi.GPIO as GPIO
 
-data_pin = 16 #gpio23
+class NexaSwitcher:
+    def __init__(self, data_pin, transmitter_code):
+        self._data_pin = data_pin
+        self._transmitter_code = transmitter_code
+        print "Created NexaSwitcher for data PIN #" + str(self._data_pin) + " and transmitter code: " +\
+              str(self._transmitter_code)
 
-def sleep_T(T_num):
-	time.sleep(T_num*250/1000000.0)
+    def sleep_T(self, T_num):
+        time.sleep(T_num*250/1000000.0)
 
-def send_physical_bit(pin, bit_value):
-	if bit_value:
-		GPIO.output(pin, True)
-		sleep_T(1)
-		GPIO.output(pin, False)
-		sleep_T(1)
-	else:
-		GPIO.output(pin, True)
-		sleep_T(1)
-		GPIO.output(pin, False)
-		sleep_T(5)
+    def send_physical_bit(self, bit_value):
+        if bit_value:
+            GPIO.output(self._data_pin, True)
+            self.sleep_T(1)
+            GPIO.output(self._data_pin, False)
+            self.sleep_T(1)
+        else:
+            GPIO.output(self._data_pin, True)
+            self.sleep_T(1)
+            GPIO.output(self._data_pin, False)
+            self.sleep_T(5)
 
-def send_bit(pin, bit_value):
-	send_physical_bit(pin, bit_value)
-	send_physical_bit(pin, not bit_value)
+    def send_bit(self, bit_value):
+        self.send_physical_bit(bit_value)
+        self.send_physical_bit(not bit_value)
 
-def send_sync(pin):
-	GPIO.output(pin, True)
-	sleep_T(1)
-	GPIO.output(pin, False)
-	sleep_T(10)
+    def send_sync(self):
+        GPIO.output(self._data_pin, True)
+        self.sleep_T(1)
+        GPIO.output(self._data_pin, False)
+        self.sleep_T(10)
 
-def send_pause(pin):
-	GPIO.output(pin, True)
-	sleep_T(1)
-	GPIO.output(pin, False)
-	sleep_T(40)
+    def send_pause(self):
+        GPIO.output(self._data_pin, True)
+        self.sleep_T(1)
+        GPIO.output(self._data_pin, False)
+        self.sleep_T(40)
 
-def send_on_off(pin, on_off):
-	send_sync(pin)
+    def send_on_off(self, on_off):
+        self.send_sync()
 
-	#transmitter code, choosed by fair random :)
-	send_bit(pin, True)
-	send_bit(pin, False)
-	send_bit(pin, True)
-	send_bit(pin, False)
-	send_bit(pin, True)
-	send_bit(pin, False)
-	send_bit(pin, True)
-	send_bit(pin, False)
-	send_bit(pin, True)
-	send_bit(pin, False)
-	send_bit(pin, True)
-	send_bit(pin, True)
-	send_bit(pin, True)
-	send_bit(pin, False)
-	send_bit(pin, True)
-	send_bit(pin, True)
-	send_bit(pin, False)
-	send_bit(pin, False)
-	send_bit(pin, False)
-	send_bit(pin, False)
-	send_bit(pin, True)
-	send_bit(pin, False)
-	send_bit(pin, True)
-	send_bit(pin, False)
-	send_bit(pin, True)
-	send_bit(pin, False)
+        #transmitter code
+        binary_number_string = format(self._transmitter_code, '08b')
+        for digit in binary_number_string:
+            bit = digit == '1'
+            self.send_bit(bit)
 
-	#group code
-	send_bit(pin, True)
+        #group code
+        self.send_bit(True)
 
-	#on/off bit, on = 0, off = 1
-	send_bit(pin, not on_off)
-	
-	#Channel bits. Proove/Anslut = 00, Nexa = 11.
-	send_bit(pin, True)
-	send_bit(pin, True)
+        #on/off bit, on = 0, off = 1
+        self.send_bit(not on_off)
 
-	# Unit bits. Device to be turned on or off.
-	# Nexa Unit #1 = 11, #2 = 10, #3 = 01.
-	send_bit(pin, True)
-	send_bit(pin, True)
-	
-	send_pause(pin)
+        #Channel bits. Proove/Anslut = 00, Nexa = 11.
+        self.send_bit(True)
+        self.send_bit(True)
 
-def switch_nexa(pin, on_off):
-	GPIO.setmode(GPIO.BOARD)
-	GPIO.setup(pin, GPIO.OUT)
-	for x in range(0, 5):
-		send_on_off(pin, on_off)
-	GPIO.cleanup()
+        # Unit bits. Device to be turned on or off.
+        # Nexa Unit #1 = 11, #2 = 10, #3 = 01.
+        self.send_bit(True)
+        self.send_bit(True)
 
+        self.send_pause()
 
-if len(sys.argv) < 2:
-    sys.exit('Usage: %s on|off' % sys.argv[0])
-
-if sys.argv[1] == "on":
-	switch_nexa(data_pin, True)
-else:
-	switch_nexa(data_pin, False)
-
+    def switch(self, on_off):
+        GPIO.setmode(GPIO.BOARD)
+        GPIO.setup(self._data_pin, GPIO.OUT)
+        for x in range(0, 5):
+            self.send_on_off(on_off)
+        GPIO.cleanup()
