@@ -3,7 +3,15 @@
 This small project was written in order to use Raspberry Pi as a central controller
 for [Nexa](http://www.nexa.se/PE3-komplett-set-2.htm) remote-controlled electrical outlets.
 
+## Hardware
+Besides Nexa electrical outlets itself and Raspberry Pi, you will need a 433 MHz transmitter module
+for Rasberry Pi like [this one](http://www.kjell.com/sortiment/el/elektronik/fjarrstyrning/433-mhz-sandarmodul-p88901).
+
 ## Configuration
+All tests were performed on Raspberry Pi with OpenELEC 5.0.8 installed.
+RPi.GPIO python package is required. It may be tricky to install it using pip or easy_install on OpenELEC.
+Use GUI add-ons download instead.
+
 Configuration can be done via `controller_config.py`
 
 ## Manual switch
