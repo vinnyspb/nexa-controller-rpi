@@ -26,7 +26,9 @@ Log will be written to `/var/log/nexa_controller.log`
 
 ## Modules
 * **TimeController** module enables selected electric outlet between sunrise and sunset
-for your geographical location (fetched by public IP of Raspberry Pi gateway).
+for your geographical location (fetched by public IP of Raspberry Pi gateway)
+* **PresenceController** module allows to enable selected electric outlet only when
+configured MAC addresses are connected to the local router (tested on ASUS RT-AC66U).
 
 
 Many thanks to [this blog](http://tech.jolowe.se/home-automation-rf-protocols/) author
