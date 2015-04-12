@@ -16,13 +16,13 @@ class TimeController:
         conn.request("GET", "/json/")
         r1 = conn.getresponse()
         if r1.status != 200:
-            return False
+            raise Exception("Not 200 status in freegeoip API: " + str(r1.status))
 
         data1 = r1.read()
         decoded_json = json.loads(data1)
 
         if decoded_json is None:
-            return False
+            raise Exception("Can't decode freegeoip response as JSON: " + str(data1))
 
         self._latitude = decoded_json['latitude']
         self._longitude = decoded_json['longitude']
@@ -48,18 +48,16 @@ class TimeController:
         conn.request("GET", "/json?lat=" + str(self._latitude) + "&lng=" + str(self._longitude) + "&date=" + date_str)
         r1 = conn.getresponse()
         if r1.status != 200:
-            return False
+            raise Exception("Not 200 status in sunrise API: " + str(r1.status))
 
         data1 = r1.read()
         decoded_json = json.loads(data1)
 
         if decoded_json is None or decoded_json['status'] != "OK":
-            return False
+            raise Exception("Not OK status in decoded JSON of sunrise API: " + str(data1))
 
         self._sunrise = self.decode_utc_time(date_str, decoded_json['results']['sunrise'])
         self._sunset = self.decode_utc_time(date_str, decoded_json['results']['sunset'])
-
-        return True
 
     def dispatch(self):
         current_time = datetime.now()
