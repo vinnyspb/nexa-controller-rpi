@@ -5,6 +5,7 @@ from datetime import datetime
 from switch_nexa import NexaSwitcher
 from time_controller import TimeController
 from presence_controller import PresenceController
+from kodi_play_pause import KodiPlayPause
 from controller_config import Config
 
 def dispatch_all_controllers(sc, controllers, global_status):
@@ -16,11 +17,17 @@ def dispatch_all_controllers(sc, controllers, global_status):
                 break
 
         if global_status is None or global_status != new_status:
+            kodi = KodiPlayPause()
+            kodi.pause()
+            time.sleep(1)
+
             print str(datetime.now()) + " Changing status from " + str(global_status) + " to " + str(new_status)
             os.nice(+40)
             switcher = NexaSwitcher(Config.RASPBERRY_PI_DATA_PIN, Config.TRANSMITTER_CODE)
             switcher.switch(new_status)
             os.nice(-40)
+
+            kodi.play()
             global_status = new_status
     except Exception as e:
         print "Exception: " + str(e)
