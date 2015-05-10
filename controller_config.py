@@ -25,3 +25,10 @@ class Config:
     # Add suffix/prefix optionally to search with the MAC address on router web interface
     SEARCH_PREFIX_FOR_MAC = '["'
     SEARCH_SUFFIX_FOR_MAC = '", "Yes", "Yes"'
+
+    # Datadog API settings (optional)
+    DATADOG_API_KEY = "datadog_api_key"
+    DATATOG_METRIC_NAME = "metric.name"
+    DATADOG_HOST_NAME = "hostname_at_datadog"
+    DATADOG_ON_VALUE = "1"
+    DATADOG_OFF_VALUE = "0"

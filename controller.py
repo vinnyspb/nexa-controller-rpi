@@ -7,6 +7,7 @@ from time_controller import TimeController
 from presence_controller import PresenceController
 from kodi_play_pause import KodiPlayPause
 from controller_config import Config
+from datadog_stat import DataDogStat
 
 def dispatch_all_controllers(sc, controllers, global_status):
     try:
@@ -28,7 +29,13 @@ def dispatch_all_controllers(sc, controllers, global_status):
             os.nice(-40)
 
             kodi.play()
+
             global_status = new_status
+
+        if Config.DATADOG_API_KEY is not None and len(Config.DATADOG_API_KEY) > 0:
+            datadog = DataDogStat()
+            datadog.post_status(new_status)
+
     except Exception as e:
         print "Exception: " + str(e)
 
