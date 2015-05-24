@@ -18,9 +18,11 @@ def dispatch_all_controllers(sc, controllers, global_status):
                 break
 
         if global_status is None or global_status != new_status:
-            kodi = KodiPlayPause()
-            kodi.pause()
-            time.sleep(1)
+            kodi = None
+            if Config.KODI_ADDR is not None and len(Config.KODI_ADDR) > 0:
+                kodi = KodiPlayPause()
+                kodi.pause()
+                time.sleep(1)
 
             print str(datetime.now()) + " Changing status from " + str(global_status) + " to " + str(new_status)
             os.nice(+40)
@@ -28,7 +30,8 @@ def dispatch_all_controllers(sc, controllers, global_status):
             switcher.switch(new_status)
             os.nice(-40)
 
-            kodi.play()
+            if kodi is not None:
+                kodi.play()
 
             global_status = new_status
 
