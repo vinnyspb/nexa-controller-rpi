@@ -26,6 +26,8 @@ class Config:
     SEARCH_PREFIX_FOR_MAC = '["'
     SEARCH_SUFFIX_FOR_MAC = '", "Yes", "Yes"'
 
+    KODI_ADDR = "127.0.0.1:80" # Disable if no Kodi is running
+
     # Datadog API settings (optional)
     DATADOG_API_KEY = "datadog_api_key"
     DATATOG_METRIC_NAME = "metric.name"
