@@ -12,6 +12,8 @@ All tests were performed on Raspberry Pi with OpenELEC 5.0.8 installed.
 RPi.GPIO python package is required. It may be tricky to install it using pip or easy_install on OpenELEC.
 Use GUI add-ons download instead.
 
+Currently I run this installation on Raspberry Pi 2 with Raspbian Wheezy.
+
 Configuration can be done via `controller_config.py`
 
 ## Manual switch
