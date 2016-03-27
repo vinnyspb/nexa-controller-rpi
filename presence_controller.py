@@ -1,6 +1,8 @@
 import httplib
 import base64
+import time
 from datetime import datetime
+
 
 class PresenceController:
     def __init__(self, router_host, router_uri, router_username, router_password, monitored_mac_addresses,
@@ -43,7 +45,15 @@ class PresenceController:
                 self._monitored_mac_addresses[device] = datetime.now()
 
     def dispatch(self):
-        self._check_connected_devices()
+        successful_result = False
+        while not successful_result:
+            try:
+                self._check_connected_devices()
+                successful_result = True
+            except Exception as e:
+                print str(e)
+                print "Sleeping 60 seconds..."
+                time.sleep(60)
 
         current_time = datetime.now()
         for device in self._monitored_mac_addresses.keys():

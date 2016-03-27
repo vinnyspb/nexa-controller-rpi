@@ -9,7 +9,16 @@ class TimeController:
         self._current_date = None
         self._sunrise = None
         self._sunset = None
-        self._fetch_location()
+
+        fetched_location = False
+        while not fetched_location:
+            try:
+                self._fetch_location()
+                fetched_location = True
+            except Exception as e:
+                print str(e)
+                print "Sleeping 60 seconds..."
+                time.sleep(60)
 
     def _fetch_location(self):
         conn = httplib.HTTPSConnection("freegeoip.net")
@@ -66,7 +75,16 @@ class TimeController:
             print "New date: " + current_date
             self._current_date = current_date
 
-            self.get_sunrise_sunset(current_date)
+            successful_response = False
+            while not successful_response:
+                try:
+                    self.get_sunrise_sunset(current_date)
+                    successful_response = True
+                except Exception as e:
+                    print str(e)
+                    print "Sleeping 60 seconds..."
+                    time.sleep(60)
+
             print "Today's sunrise: " + str(self._sunrise)
             print "Today's sunset: " + str(self._sunset)
 
@@ -87,4 +105,4 @@ class TimeController:
                 self._sunset = upper_bound
                 print "Sunset is after upper bound, using upper bound"
 
-        return self._sunrise < current_time and current_time < self._sunset
+        return self._sunrise < current_time < self._sunset
