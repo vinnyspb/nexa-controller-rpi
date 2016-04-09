@@ -21,7 +21,7 @@ class TimeController:
                 time.sleep(60)
 
     def _fetch_location(self):
-        conn = httplib.HTTPSConnection("freegeoip.net")
+        conn = httplib.HTTPSConnection("freegeoip.io")
         conn.request("GET", "/json/")
         r1 = conn.getresponse()
         if r1.status != 200:

@@ -34,6 +34,6 @@ configured MAC addresses are connected to the local router (tested on ASUS RT-AC
 Many thanks to [this blog](http://tech.jolowe.se/home-automation-rf-protocols/) author
 for a comprehensive Nexa protocol analysis
 
-**freegeoip.net** public API is used to fetch geo position based on public IP address
+**freegeoip.io** public API is used to fetch geo position based on public IP address
 
 **sunrise-sunset.org** public API is used to calculate twilight timings based on location
