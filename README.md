@@ -22,7 +22,9 @@ To perform manual switch on/off (e.g. to pair RPi with the outlet), use:
 ## How to start
 Start it using `./restart.sh`
 
-Log will be written to `/run/nexa_controller.log`
+It also starts a simple REST server on port 8080, which accepts `/open` and `/close` GET requests.
+
+Log will be written to `/run/nexa_controller.log` and `/run/nexa_rest_server.log`
 
 ## Modules
 * **TimeController** module enables selected electric outlet between sunrise and sunset
