@@ -22,7 +22,7 @@ class PresenceController:
         # base64 encode the username and password
         auth = base64.encodestring('%s:%s' % (self._router_username, self._router_password)).replace('\n', '')
 
-        webservice = httplib.HTTP(self._router_host)
+        webservice = httplib.HTTPConnection(self._router_host, timeout=60)
         # write your headers
         webservice.putrequest("GET", self._router_uri)
         webservice.putheader("Host", self._router_host)
@@ -34,11 +34,11 @@ class PresenceController:
 
         webservice.endheaders()
         # get the response
-        statuscode, statusmessage, header = webservice.getreply()
-        if statuscode != 200:
-            raise Exception("Can't connect to router: " + statusmessage)
+        response = webservice.getresponse()
+        if response.status != 200:
+            raise Exception("Can't connect to router: " + response.reason)
 
-        router_web_page = webservice.getfile().read()
+        router_web_page = response.read()
         for device in self._monitored_mac_addresses.keys():
             search_for_message = self._search_prefix_for_mac + device + self._search_suffix_for_mac
             if search_for_message in router_web_page:

@@ -21,7 +21,7 @@ class TimeController:
                 time.sleep(60)
 
     def _fetch_location(self):
-        conn = httplib.HTTPSConnection("freegeoip.io")
+        conn = httplib.HTTPSConnection("freegeoip.io", timeout=60)
         conn.request("GET", "/json/")
         r1 = conn.getresponse()
         if r1.status != 200:
@@ -53,7 +53,7 @@ class TimeController:
     # could not be easily installed into OpenELEC because of broken dependency install
     # system. And I'm too lazy to implement this maths on my own :)
     def get_sunrise_sunset(self, date_str):
-        conn = httplib.HTTPConnection("api.sunrise-sunset.org")
+        conn = httplib.HTTPConnection("api.sunrise-sunset.org", timeout=60)
         conn.request("GET", "/json?lat=" + str(self._latitude) + "&lng=" + str(self._longitude) + "&date=" + date_str)
         r1 = conn.getresponse()
         if r1.status != 200:

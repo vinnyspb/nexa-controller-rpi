@@ -8,7 +8,7 @@ class DataDogStat:
         None
 
     def post_status(self, status):
-        conn = httplib.HTTPSConnection("app.datadoghq.com")
+        conn = httplib.HTTPSConnection("app.datadoghq.com", timeout=60)
         conn.request("GET", "/api/v1/validate?api_key=" + Config.DATADOG_API_KEY)
         r1 = conn.getresponse()
         if r1.status != 200:
@@ -26,7 +26,7 @@ class DataDogStat:
                      ', ' + datadog_metric_value + ']], "type":"gauge", "host":"' +\
                      Config.DATADOG_HOST_NAME + '", "tags\":[""]}]}'
 
-        conn = httplib.HTTPSConnection("app.datadoghq.com")
+        conn = httplib.HTTPSConnection("app.datadoghq.com", timeout=60)
         conn.request("POST", "/api/v1/series?api_key=" + Config.DATADOG_API_KEY,
                      post_data,
                      headers)

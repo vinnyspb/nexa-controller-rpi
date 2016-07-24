@@ -8,7 +8,7 @@ class RestWindowSwitcher(object):
         self._is_action_open = is_action_open
 
     def GET(self):
-        switcher = NexaSwitcher(Config.RASPBERRY_PI_DATA_PIN, Config.TRANSMITTER_CODE)
+        switcher = NexaSwitcher(Config.RASPBERRY_PI_DATA_PIN, Config.TRANSMITTER_CODES[0])
         switcher.switch(self._is_action_open)
         return "OK"
 

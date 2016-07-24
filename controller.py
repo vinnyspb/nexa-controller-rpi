@@ -27,8 +27,10 @@ def dispatch_all_controllers(sc, controllers, global_status):
 
             print str(datetime.now()) + " Changing status from " + str(global_status) + " to " + str(new_status)
             os.nice(+40)
-            switcher = NexaSwitcher(Config.RASPBERRY_PI_DATA_PIN, Config.TRANSMITTER_CODE)
-            switcher.switch(new_status)
+            for transmitter_code in Config.TRANSMITTER_CODES:
+                switcher = NexaSwitcher(Config.RASPBERRY_PI_DATA_PIN, transmitter_code)
+                switcher.switch(new_status)
+                time.sleep(1)
             os.nice(-40)
 
             if kodi is not None:

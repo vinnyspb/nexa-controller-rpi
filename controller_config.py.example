@@ -3,7 +3,7 @@ class Config:
     RASPBERRY_PI_DATA_PIN = 16
 
     # You can choose your own transmitter code randomly
-    TRANSMITTER_CODE = 44756010
+    TRANSMITTER_CODES = [44756010,]
 
     # Earliest enable time, regardless of sunrise EARLIEST_ENABLE_HOUR:EARLIEST_ENABLE_MINUTE local (24h format)
     EARLIEST_ENABLE_HOUR = 6

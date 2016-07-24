@@ -7,7 +7,7 @@ class KodiPlayPause:
         None
 
     def _switch_play_pause(self):
-        conn = httplib.HTTPConnection(Config.KODI_ADDR)
+        conn = httplib.HTTPConnection(Config.KODI_ADDR, timeout=60)
         conn.request("POST", "/jsonrpc", '{"jsonrpc": "2.0", "method": "Player.PlayPause", "params": { "playerid": 1 }, "id": 1}')
 
         r1 = conn.getresponse()
