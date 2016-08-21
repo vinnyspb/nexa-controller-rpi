@@ -1,0 +1,586 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F9C422C31CBA2BF0001443B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C422C21CBA2BF0001443B7 /* main.m */; };
+		F9C422C61CBA2BF0001443B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C422C51CBA2BF0001443B7 /* AppDelegate.m */; };
+		F9C422C91CBA2BF0001443B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C422C81CBA2BF0001443B7 /* ViewController.m */; };
+		F9C422CC1CBA2BF0001443B7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C422CA1CBA2BF0001443B7 /* Main.storyboard */; };
+		F9C422CE1CBA2BF0001443B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C422CD1CBA2BF0001443B7 /* Assets.xcassets */; };
+		F9C422D11CBA2BF0001443B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C422CF1CBA2BF0001443B7 /* LaunchScreen.storyboard */; };
+		F9C422D61CBA2BF0001443B7 /* NexaWatchController WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F9C422D51CBA2BF0001443B7 /* NexaWatchController WatchKit App.app */; };
+		F9C422DC1CBA2BF0001443B7 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9C422DA1CBA2BF0001443B7 /* Interface.storyboard */; };
+		F9C422DE1CBA2BF0001443B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C422DD1CBA2BF0001443B7 /* Assets.xcassets */; };
+		F9C422E51CBA2BF1001443B7 /* NexaWatchController WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F9C422E41CBA2BF1001443B7 /* NexaWatchController WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F9C422EB1CBA2BF1001443B7 /* InterfaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C422EA1CBA2BF1001443B7 /* InterfaceController.m */; };
+		F9C422EE1CBA2BF1001443B7 /* ExtensionDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C422ED1CBA2BF1001443B7 /* ExtensionDelegate.m */; };
+		F9C422F11CBA2BF1001443B7 /* GlanceController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C422F01CBA2BF1001443B7 /* GlanceController.m */; };
+		F9C422F31CBA2BF1001443B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9C422F21CBA2BF1001443B7 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F9C422D71CBA2BF0001443B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9C422B61CBA2BF0001443B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9C422D41CBA2BF0001443B7;
+			remoteInfo = "NexaWatchController WatchKit App";
+		};
+		F9C422E61CBA2BF1001443B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9C422B61CBA2BF0001443B7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F9C422E31CBA2BF1001443B7;
+			remoteInfo = "NexaWatchController WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F9C422FA1CBA2BF1001443B7 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				F9C422E51CBA2BF1001443B7 /* NexaWatchController WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9C422FE1CBA2BF1001443B7 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F9C422D61CBA2BF0001443B7 /* NexaWatchController WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F9C422BE1CBA2BF0001443B7 /* NexaWatchController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NexaWatchController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9C422C21CBA2BF0001443B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F9C422C41CBA2BF0001443B7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F9C422C51CBA2BF0001443B7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F9C422C71CBA2BF0001443B7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F9C422C81CBA2BF0001443B7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F9C422CB1CBA2BF0001443B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F9C422CD1CBA2BF0001443B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9C422D01CBA2BF0001443B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F9C422D21CBA2BF0001443B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9C422D51CBA2BF0001443B7 /* NexaWatchController WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NexaWatchController WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9C422DB1CBA2BF0001443B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		F9C422DD1CBA2BF0001443B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9C422DF1CBA2BF0001443B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F9C422E41CBA2BF1001443B7 /* NexaWatchController WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "NexaWatchController WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9C422E91CBA2BF1001443B7 /* InterfaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InterfaceController.h; sourceTree = "<group>"; };
+		F9C422EA1CBA2BF1001443B7 /* InterfaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InterfaceController.m; sourceTree = "<group>"; };
+		F9C422EC1CBA2BF1001443B7 /* ExtensionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExtensionDelegate.h; sourceTree = "<group>"; };
+		F9C422ED1CBA2BF1001443B7 /* ExtensionDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ExtensionDelegate.m; sourceTree = "<group>"; };
+		F9C422EF1CBA2BF1001443B7 /* GlanceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GlanceController.h; sourceTree = "<group>"; };
+		F9C422F01CBA2BF1001443B7 /* GlanceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GlanceController.m; sourceTree = "<group>"; };
+		F9C422F21CBA2BF1001443B7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F9C422F41CBA2BF1001443B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F9C422BB1CBA2BF0001443B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9C422E11CBA2BF1001443B7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F9C422B51CBA2BF0001443B7 = {
+			isa = PBXGroup;
+			children = (
+				F9C422C01CBA2BF0001443B7 /* NexaWatchController */,
+				F9C422D91CBA2BF0001443B7 /* NexaWatchController WatchKit App */,
+				F9C422E81CBA2BF1001443B7 /* NexaWatchController WatchKit Extension */,
+				F9C422BF1CBA2BF0001443B7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F9C422BF1CBA2BF0001443B7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9C422BE1CBA2BF0001443B7 /* NexaWatchController.app */,
+				F9C422D51CBA2BF0001443B7 /* NexaWatchController WatchKit App.app */,
+				F9C422E41CBA2BF1001443B7 /* NexaWatchController WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9C422C01CBA2BF0001443B7 /* NexaWatchController */ = {
+			isa = PBXGroup;
+			children = (
+				F9C422C41CBA2BF0001443B7 /* AppDelegate.h */,
+				F9C422C51CBA2BF0001443B7 /* AppDelegate.m */,
+				F9C422C71CBA2BF0001443B7 /* ViewController.h */,
+				F9C422C81CBA2BF0001443B7 /* ViewController.m */,
+				F9C422CA1CBA2BF0001443B7 /* Main.storyboard */,
+				F9C422CD1CBA2BF0001443B7 /* Assets.xcassets */,
+				F9C422CF1CBA2BF0001443B7 /* LaunchScreen.storyboard */,
+				F9C422D21CBA2BF0001443B7 /* Info.plist */,
+				F9C422C11CBA2BF0001443B7 /* Supporting Files */,
+			);
+			path = NexaWatchController;
+			sourceTree = "<group>";
+		};
+		F9C422C11CBA2BF0001443B7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F9C422C21CBA2BF0001443B7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F9C422D91CBA2BF0001443B7 /* NexaWatchController WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				F9C422DA1CBA2BF0001443B7 /* Interface.storyboard */,
+				F9C422DD1CBA2BF0001443B7 /* Assets.xcassets */,
+				F9C422DF1CBA2BF0001443B7 /* Info.plist */,
+			);
+			path = "NexaWatchController WatchKit App";
+			sourceTree = "<group>";
+		};
+		F9C422E81CBA2BF1001443B7 /* NexaWatchController WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F9C422E91CBA2BF1001443B7 /* InterfaceController.h */,
+				F9C422EA1CBA2BF1001443B7 /* InterfaceController.m */,
+				F9C422EC1CBA2BF1001443B7 /* ExtensionDelegate.h */,
+				F9C422ED1CBA2BF1001443B7 /* ExtensionDelegate.m */,
+				F9C422EF1CBA2BF1001443B7 /* GlanceController.h */,
+				F9C422F01CBA2BF1001443B7 /* GlanceController.m */,
+				F9C422F21CBA2BF1001443B7 /* Assets.xcassets */,
+				F9C422F41CBA2BF1001443B7 /* Info.plist */,
+			);
+			path = "NexaWatchController WatchKit Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F9C422BD1CBA2BF0001443B7 /* NexaWatchController */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9C422FF1CBA2BF1001443B7 /* Build configuration list for PBXNativeTarget "NexaWatchController" */;
+			buildPhases = (
+				F9C422BA1CBA2BF0001443B7 /* Sources */,
+				F9C422BB1CBA2BF0001443B7 /* Frameworks */,
+				F9C422BC1CBA2BF0001443B7 /* Resources */,
+				F9C422FE1CBA2BF1001443B7 /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9C422D81CBA2BF0001443B7 /* PBXTargetDependency */,
+			);
+			name = NexaWatchController;
+			productName = NexaWatchController;
+			productReference = F9C422BE1CBA2BF0001443B7 /* NexaWatchController.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F9C422D41CBA2BF0001443B7 /* NexaWatchController WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9C422FB1CBA2BF1001443B7 /* Build configuration list for PBXNativeTarget "NexaWatchController WatchKit App" */;
+			buildPhases = (
+				F9C422D31CBA2BF0001443B7 /* Resources */,
+				F9C422FA1CBA2BF1001443B7 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F9C422E71CBA2BF1001443B7 /* PBXTargetDependency */,
+			);
+			name = "NexaWatchController WatchKit App";
+			productName = "NexaWatchController WatchKit App";
+			productReference = F9C422D51CBA2BF0001443B7 /* NexaWatchController WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		F9C422E31CBA2BF1001443B7 /* NexaWatchController WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F9C422F71CBA2BF1001443B7 /* Build configuration list for PBXNativeTarget "NexaWatchController WatchKit Extension" */;
+			buildPhases = (
+				F9C422E01CBA2BF1001443B7 /* Sources */,
+				F9C422E11CBA2BF1001443B7 /* Frameworks */,
+				F9C422E21CBA2BF1001443B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NexaWatchController WatchKit Extension";
+			productName = "NexaWatchController WatchKit Extension";
+			productReference = F9C422E41CBA2BF1001443B7 /* NexaWatchController WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F9C422B61CBA2BF0001443B7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Viacheslav Kalmykov";
+				TargetAttributes = {
+					F9C422BD1CBA2BF0001443B7 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = HHECDVNZ9X;
+					};
+					F9C422D41CBA2BF0001443B7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					F9C422E31CBA2BF1001443B7 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = HHECDVNZ9X;
+					};
+				};
+			};
+			buildConfigurationList = F9C422B91CBA2BF0001443B7 /* Build configuration list for PBXProject "NexaWatchController" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F9C422B51CBA2BF0001443B7;
+			productRefGroup = F9C422BF1CBA2BF0001443B7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F9C422BD1CBA2BF0001443B7 /* NexaWatchController */,
+				F9C422D41CBA2BF0001443B7 /* NexaWatchController WatchKit App */,
+				F9C422E31CBA2BF1001443B7 /* NexaWatchController WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F9C422BC1CBA2BF0001443B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9C422D11CBA2BF0001443B7 /* LaunchScreen.storyboard in Resources */,
+				F9C422CE1CBA2BF0001443B7 /* Assets.xcassets in Resources */,
+				F9C422CC1CBA2BF0001443B7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9C422D31CBA2BF0001443B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9C422DE1CBA2BF0001443B7 /* Assets.xcassets in Resources */,
+				F9C422DC1CBA2BF0001443B7 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9C422E21CBA2BF1001443B7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9C422F31CBA2BF1001443B7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F9C422BA1CBA2BF0001443B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9C422C91CBA2BF0001443B7 /* ViewController.m in Sources */,
+				F9C422C61CBA2BF0001443B7 /* AppDelegate.m in Sources */,
+				F9C422C31CBA2BF0001443B7 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F9C422E01CBA2BF1001443B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F9C422EE1CBA2BF1001443B7 /* ExtensionDelegate.m in Sources */,
+				F9C422EB1CBA2BF1001443B7 /* InterfaceController.m in Sources */,
+				F9C422F11CBA2BF1001443B7 /* GlanceController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F9C422D81CBA2BF0001443B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9C422D41CBA2BF0001443B7 /* NexaWatchController WatchKit App */;
+			targetProxy = F9C422D71CBA2BF0001443B7 /* PBXContainerItemProxy */;
+		};
+		F9C422E71CBA2BF1001443B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F9C422E31CBA2BF1001443B7 /* NexaWatchController WatchKit Extension */;
+			targetProxy = F9C422E61CBA2BF1001443B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F9C422CA1CBA2BF0001443B7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9C422CB1CBA2BF0001443B7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F9C422CF1CBA2BF0001443B7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9C422D01CBA2BF0001443B7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		F9C422DA1CBA2BF0001443B7 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F9C422DB1CBA2BF0001443B7 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F9C422F51CBA2BF1001443B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F9C422F61CBA2BF1001443B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F9C422F81CBA2BF1001443B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "NexaWatchController WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kalmykovs.NexaWatchController.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		F9C422F91CBA2BF1001443B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
+				INFOPLIST_FILE = "NexaWatchController WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kalmykovs.NexaWatchController.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE = "";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		F9C422FC1CBA2BF1001443B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IBSC_MODULE = NexaWatchController_WatchKit_Extension;
+				INFOPLIST_FILE = "NexaWatchController WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kalmykovs.NexaWatchController.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Debug;
+		};
+		F9C422FD1CBA2BF1001443B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				IBSC_MODULE = NexaWatchController_WatchKit_Extension;
+				INFOPLIST_FILE = "NexaWatchController WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kalmykovs.NexaWatchController.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.2;
+			};
+			name = Release;
+		};
+		F9C423001CBA2BF1001443B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = NexaWatchController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kalmykovs.NexaWatchController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F9C423011CBA2BF1001443B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = NexaWatchController/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.kalmykovs.NexaWatchController;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F9C422B91CBA2BF0001443B7 /* Build configuration list for PBXProject "NexaWatchController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9C422F51CBA2BF1001443B7 /* Debug */,
+				F9C422F61CBA2BF1001443B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9C422F71CBA2BF1001443B7 /* Build configuration list for PBXNativeTarget "NexaWatchController WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9C422F81CBA2BF1001443B7 /* Debug */,
+				F9C422F91CBA2BF1001443B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9C422FB1CBA2BF1001443B7 /* Build configuration list for PBXNativeTarget "NexaWatchController WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9C422FC1CBA2BF1001443B7 /* Debug */,
+				F9C422FD1CBA2BF1001443B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F9C422FF1CBA2BF1001443B7 /* Build configuration list for PBXNativeTarget "NexaWatchController" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F9C423001CBA2BF1001443B7 /* Debug */,
+				F9C423011CBA2BF1001443B7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F9C422B61CBA2BF0001443B7 /* Project object */;
+}
