@@ -45,7 +45,7 @@ class NexaSwitcher:
         self.send_sync()
 
         #transmitter code
-        binary_number_string = format(self._transmitter_code, '08b')
+        binary_number_string = format(self._transmitter_code, '026b')
         for digit in binary_number_string:
             bit = digit == '1'
             self.send_bit(bit)
