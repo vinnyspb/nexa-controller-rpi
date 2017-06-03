@@ -13,18 +13,13 @@ class Config:
     LATEST_DISABLE_HOUR = 22
     LATEST_DISABLE_MINUTE = 0
 
-    # Router web interface access settings to get connected devices on local network
+    # Router telnet access settings to get connected devices on local network
     ROUTER_HOST = "192.168.1.1"
-    ROUTER_URI = "/update_clients.asp"
     ROUTER_USERNAME = "admin"
     ROUTER_PASSWORD = "admin"
 
     # MAC addresses list that should be online locally to enable Nexa outlet
     MONITORED_MAC_ADRESSES = ["01:02:03:04:AA:BB", "01:02:03:04:AA:CC"]
-
-    # Add suffix/prefix optionally to search with the MAC address on router web interface
-    SEARCH_PREFIX_FOR_MAC = '["'
-    SEARCH_SUFFIX_FOR_MAC = '", "Yes", "Yes"'
 
     KODI_ADDR = "127.0.0.1:80" # Disable if no Kodi is running
 

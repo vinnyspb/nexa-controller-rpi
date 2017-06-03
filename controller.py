@@ -50,13 +50,8 @@ def dispatch_all_controllers(sc, controllers, global_status):
 
 global_status = None
 controllers = [TimeController(),
-               PresenceController(Config.ROUTER_HOST,
-                                  Config.ROUTER_URI,
-                                  Config.ROUTER_USERNAME,
-                                  Config.ROUTER_PASSWORD,
-                                  Config.MONITORED_MAC_ADRESSES,
-                                  Config.SEARCH_PREFIX_FOR_MAC,
-                                  Config.SEARCH_SUFFIX_FOR_MAC)]
+               PresenceController(Config.ROUTER_HOST, Config.ROUTER_USERNAME,
+                                  Config.ROUTER_PASSWORD, Config.MONITORED_MAC_ADRESSES)]
 s = sched.scheduler(time.time, time.sleep)
 s.enter(1, 1, dispatch_all_controllers, (s, controllers, global_status))
 s.run()

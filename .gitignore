@@ -1,1 +1,4 @@
 controller_config.py
+.idea
+xcuserdata
+.DS_Store
