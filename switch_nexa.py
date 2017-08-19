@@ -1,17 +1,18 @@
-import sys
+import logging
 import time
-sys.path.append("/storage/.kodi/addons/python.RPi.GPIO/lib")
+
 import RPi.GPIO as GPIO
+
 
 class NexaSwitcher:
     def __init__(self, data_pin, transmitter_code):
         self._data_pin = data_pin
         self._transmitter_code = transmitter_code
-        print "Created NexaSwitcher for data PIN #" + str(self._data_pin) + " and transmitter code: " +\
-              str(self._transmitter_code)
+        logging.info("Created NexaSwitcher for data PIN #" + str(self._data_pin) + " and transmitter code: " + \
+                     str(self._transmitter_code))
 
     def sleep_T(self, T_num):
-        time.sleep(T_num*250/1000000.0)
+        time.sleep(T_num * 250 / 1000000.0)
 
     def send_physical_bit(self, bit_value):
         if bit_value:
@@ -44,19 +45,19 @@ class NexaSwitcher:
     def send_on_off(self, on_off):
         self.send_sync()
 
-        #transmitter code
+        # transmitter code
         binary_number_string = format(self._transmitter_code, '026b')
         for digit in binary_number_string:
             bit = digit == '1'
             self.send_bit(bit)
 
-        #group code
+        # group code
         self.send_bit(True)
 
-        #on/off bit, on = 0, off = 1
+        # on/off bit, on = 0, off = 1
         self.send_bit(not on_off)
 
-        #Channel bits. Proove/Anslut = 00, Nexa = 11.
+        # Channel bits. Proove/Anslut = 00, Nexa = 11.
         self.send_bit(True)
         self.send_bit(True)
 
@@ -79,6 +80,5 @@ class NexaSwitcher:
         for x in range(0, 5):
             self.send_on_off(on_off)
 
-	GPIO.output(self._data_pin, False) # Make sure that we do not leave PIN in 'on' state
+        GPIO.output(self._data_pin, False)  # Make sure that we do not leave PIN in 'on' state
         GPIO.cleanup()
-

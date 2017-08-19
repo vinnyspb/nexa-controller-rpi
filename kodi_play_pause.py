@@ -1,14 +1,15 @@
 import httplib
 import json
-from controller_config import Config
+
 
 class KodiPlayPause:
-    def __init__(self):
-        None
+    def __init__(self, config):
+        self._config = config
 
     def _switch_play_pause(self):
-        conn = httplib.HTTPConnection(Config.KODI_ADDR, timeout=60)
-        conn.request("POST", "/jsonrpc", '{"jsonrpc": "2.0", "method": "Player.PlayPause", "params": { "playerid": 1 }, "id": 1}')
+        conn = httplib.HTTPConnection(self._config.KODI_ADDR, timeout=60)
+        conn.request("POST", "/jsonrpc",
+                     '{"jsonrpc": "2.0", "method": "Player.PlayPause", "params": { "playerid": 1 }, "id": 1}')
 
         r1 = conn.getresponse()
         if r1.status != 200:

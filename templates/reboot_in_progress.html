@@ -1,0 +1,20 @@
+{% include 'header.html' %}
+
+<script>
+    var pingUrl = "/";
+    var targetUrl = "/";
+    setInterval(ping, 60000);
+
+    function ping() {
+        $.ajax({
+            url: pingUrl,
+            success: function (result) {
+                window.location.href = targetUrl;
+            }
+        });
+    }
+
+</script>
+
+Rebooting the device, it might take 1-2 minutes. Page will automatically reload once reboot is done.
+{% include 'footer.html' %}

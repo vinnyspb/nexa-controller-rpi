@@ -1,0 +1,219 @@
+{% include 'header.html' %}
+
+{% if message|length > 0 %}
+    <div class="alert alert-primary" role="alert">
+        {{ message | safe }}
+    </div>
+{% endif %}
+
+<form method="POST" action="/save_settings">
+
+    <div id="accordion" role="tablist">
+        <div class="card">
+            <div class="card-header" role="tab" id="headingBasicSettings">
+                <h5 class="mb-0">
+                    <a data-toggle="collapse" href="#collapseBasicSettings" aria-expanded="true"
+                       aria-controls="collapseBasicSettings">
+                        Basic settings
+                    </a>
+                </h5>
+            </div>
+
+            <div id="collapseBasicSettings" class="collapse show" role="tabpanel"
+                 aria-labelledby="headingBasicSettings"
+                 data-parent="#accordion">
+                <div class="card-body">
+
+                    <div class="form-row align-items-center">
+                        <div class="col-auto">
+                            <label class="mr-sm-2" for="EARLIEST_ENABLE_HOUR">Earliest enable time, regardless of
+                                sunrise</label>
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="EARLIEST_ENABLE_HOUR"
+                                    name="EARLIEST_ENABLE_HOUR">
+                                {% for i in range(0, 24) %}
+                                    <option value="{{ i }}"
+
+                                            {% if i== config.EARLIEST_ENABLE_HOUR %} selected {% endif %}
+
+                                    >{{ "%02d" % i }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            :
+                        </div>
+                        <div class="col-auto">
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="EARLIEST_ENABLE_MINUTE"
+                                    name="EARLIEST_ENABLE_MINUTE">
+                                {% for i in range(0, 60) %}
+                                    <option value="{{ i }}"
+
+                                            {% if i== config.EARLIEST_ENABLE_MINUTE %} selected {% endif %}
+
+                                    >{{ "%02d" % i }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row align-items-center">
+                        <div class="col-auto">
+                            <label class="mr-sm-2" for="LATEST_DISABLE_HOUR">Latest disable time, regardless of
+                                sunset</label>
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="LATEST_DISABLE_HOUR"
+                                    name="LATEST_DISABLE_HOUR">
+                                {% for i in range(0, 24) %}
+                                    <option value="{{ i }}"
+
+                                            {% if i== config.LATEST_DISABLE_HOUR %} selected {% endif %}
+
+                                    >{{ "%02d" % i }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-auto">
+                            :
+                        </div>
+                        <div class="col-auto">
+                            <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="LATEST_DISABLE_MINUTE"
+                                    name="LATEST_DISABLE_MINUTE">
+                                {% for i in range(0, 60) %}
+                                    <option value="{{ i }}"
+
+                                            {% if i== config.LATEST_DISABLE_MINUTE %} selected {% endif %}
+
+                                    >{{ "%02d" % i }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="MONITORED_MAC_ADRESSES">Monitored MAC addresses</label>
+                        <textarea class="form-control" id="MONITORED_MAC_ADRESSES" name="MONITORED_MAC_ADRESSES"
+                                  rows="5">{{ config.MONITORED_MAC_ADRESSES | join('\n') }}</textarea>
+                        <small id="macHelp" class="form-text text-muted">
+                            When these devices are in router's visibility, window will open. Should all the devices
+                            leave the
+                            visibility area, window will close. See how to find MAC address of your <a
+                                href="http://www.tomsguide.com/faq/id-2318718/locate-mac-address-android-smartphone.html"
+                                target="_blank">Android</a> or <a
+                                href="https://www.tekrevue.com/tip/how-to-find-mac-address-iphone-ipad/"
+                                target="_blank">iOS</a> phone.
+                        </small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" role="tab" id="headingAdvancedSettings">
+                <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" href="#collapseAdvancedSettings"
+                       aria-expanded="false"
+                       aria-controls="collapseTwo">
+                        Advanced settings
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseAdvancedSettings" class="collapse" role="tabpanel"
+                 aria-labelledby="headingAdvancedSettings"
+                 data-parent="#accordion">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="RASPBERRY_PI_DATA_PIN">Raspberry Pi data PIN</label>
+                        <input class="form-control" id="RASPBERRY_PI_DATA_PIN" name="RASPBERRY_PI_DATA_PIN"
+                               value="{{ config.RASPBERRY_PI_DATA_PIN }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="TRANSMITTER_CODES">Transmitter codes</label>
+                        <textarea class="form-control" id="TRANSMITTER_CODES" name="TRANSMITTER_CODES"
+                                  rows="3">{{ config.TRANSMITTER_CODES | join('\n') }}</textarea>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="ROUTER_HOST">Router IP</label>
+                        <input class="form-control" id="ROUTER_HOST" name="ROUTER_HOST"
+                               value="{{ config.ROUTER_HOST }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ROUTER_USERNAME">Router username</label>
+                        <input class="form-control" id="ROUTER_USERNAME" name="ROUTER_USERNAME"
+                               value="{{ config.ROUTER_USERNAME }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ROUTER_PASSWORD">Router password</label>
+                        <input type="password" class="form-control" id="ROUTER_PASSWORD" name="ROUTER_PASSWORD"
+                               value="{{ config.ROUTER_PASSWORD }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="KODI_ADDR">Kodi IP:port</label>
+                        <input class="form-control" id="KODI_ADDR" name="KODI_ADDR"
+                               value="{{ config.KODI_ADDR }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DATADOG_API_KEY">Datadog API key</label>
+                        <input class="form-control" id="DATADOG_API_KEY" name="DATADOG_API_KEY"
+                               value="{{ config.DATADOG_API_KEY }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DATATOG_METRIC_NAME">Datadog metric name</label>
+                        <input class="form-control" id="DATATOG_METRIC_NAME" name="DATATOG_METRIC_NAME"
+                               value="{{ config.DATATOG_METRIC_NAME }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DATADOG_HOST_NAME">Datadog host name</label>
+                        <input class="form-control" id="DATADOG_HOST_NAME" name="DATADOG_HOST_NAME"
+                               value="{{ config.DATADOG_HOST_NAME }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DATADOG_ON_VALUE">Datadog "on" value</label>
+                        <input class="form-control" id="DATADOG_ON_VALUE" name="DATADOG_ON_VALUE"
+                               value="{{ config.DATADOG_ON_VALUE }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="DATADOG_OFF_VALUE">Datadog "off" value</label>
+                        <input class="form-control" id="DATADOG_OFF_VALUE" name="DATADOG_OFF_VALUE"
+                               value="{{ config.DATADOG_OFF_VALUE }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" role="tab" id="headingLogs">
+                <h5 class="mb-0">
+                    <a class="collapsed" data-toggle="collapse" href="#collapseLogs" aria-expanded="false"
+                       aria-controls="collapseTwo">
+                        Logs
+                    </a>
+                </h5>
+            </div>
+            <div id="collapseLogs" class="collapse" role="tabpanel" aria-labelledby="headingLogs"
+                 data-parent="#accordion">
+
+                <pre><code>{{ logs | join('\n') }}</code></pre>
+
+            </div>
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+{% include 'footer.html' %}

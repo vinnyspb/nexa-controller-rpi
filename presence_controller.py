@@ -1,3 +1,4 @@
+import logging
 import telnetlib
 import time
 from datetime import datetime
@@ -36,8 +37,8 @@ class PresenceController:
                 self._check_connected_devices()
                 successful_result = True
             except Exception as e:
-                print str(e)
-                print "Sleeping 60 seconds..."
+                logging.exception("Presense controller error")
+                logging.info("Sleeping 60 seconds...")
                 time.sleep(60)
 
         current_time = datetime.now()
@@ -46,6 +47,6 @@ class PresenceController:
             if time_diff.total_seconds() < 5*60:
                 return True
 
-        print "PresenceController: No devices from the list are alive for the last 5 minutes, disabling:" +\
-              str(self._monitored_mac_addresses)
+        logging.info("PresenceController: No devices from the list are alive for the last 5 minutes, disabling:" + \
+                     str(self._monitored_mac_addresses))
         return False

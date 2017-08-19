@@ -1,11 +1,13 @@
 import httplib
 import json
+import logging
 import time
 from datetime import datetime, timedelta
-from controller_config import Config
+
 
 class TimeController:
-    def __init__(self):
+    def __init__(self, config):
+        self._config = config
         self._current_date = None
         self._sunrise = None
         self._sunset = None
@@ -16,8 +18,8 @@ class TimeController:
                 self._fetch_location()
                 fetched_location = True
             except Exception as e:
-                print str(e)
-                print "Sleeping 60 seconds..."
+                logging.exception("Can't get location")
+                logging.info("Sleeping 60 seconds...")
                 time.sleep(60)
 
     def _fetch_location(self):
@@ -35,7 +37,7 @@ class TimeController:
 
         self._latitude = decoded_json['latitude']
         self._longitude = decoded_json['longitude']
-        print "Fetched device position: (" + str(self._latitude) + ", " + str(self._longitude) + ")"
+        logging.info("Fetched device position: (" + str(self._latitude) + ", " + str(self._longitude) + ")")
 
     def decode_utc_time(self, date_str, time_str):
         t = datetime.strptime(date_str + ' ' + time_str, "%Y-%m-%d %I:%M:%S %p")
@@ -72,7 +74,7 @@ class TimeController:
         current_time = datetime.now()
         current_date = current_time.strftime("%Y-%m-%d")
         if self._current_date is None or self._current_date != current_date:
-            print "New date: " + current_date
+            logging.info("New date: " + current_date)
             self._current_date = current_date
 
             successful_response = False
@@ -81,28 +83,28 @@ class TimeController:
                     self.get_sunrise_sunset(current_date)
                     successful_response = True
                 except Exception as e:
-                    print str(e)
-                    print "Sleeping 60 seconds..."
+                    logging.exception("Can't get sunrise/sunset")
+                    logging.info("Sleeping 60 seconds...")
                     time.sleep(60)
 
-            print "Today's sunrise: " + str(self._sunrise)
-            print "Today's sunset: " + str(self._sunset)
+            logging.info("Today's sunrise: " + str(self._sunrise))
+            logging.info("Today's sunset: " + str(self._sunset))
 
             current_date = datetime.now()
-            lower_bound = current_date.replace(hour=Config.EARLIEST_ENABLE_HOUR,
-                                               minute=Config.EARLIEST_ENABLE_MINUTE,
+            lower_bound = current_date.replace(hour=self._config.EARLIEST_ENABLE_HOUR,
+                                               minute=self._config.EARLIEST_ENABLE_MINUTE,
                                                second=0)
-            upper_bound = current_date.replace(hour=Config.LATEST_DISABLE_HOUR,
-                                               minute=Config.LATEST_DISABLE_MINUTE,
+            upper_bound = current_date.replace(hour=self._config.LATEST_DISABLE_HOUR,
+                                               minute=self._config.LATEST_DISABLE_MINUTE,
                                                second=0)
-            print "Lower bound: " + str(lower_bound)
-            print "Upper bound: " + str(upper_bound)
+            logging.info("Lower bound: " + str(lower_bound))
+            logging.info("Upper bound: " + str(upper_bound))
 
             if self._sunrise < lower_bound:
                 self._sunrise = lower_bound
-                print "Sunrise is before lower bound, using lower bound"
+                logging.info("Sunrise is before lower bound, using lower bound")
             if self._sunset > upper_bound:
                 self._sunset = upper_bound
-                print "Sunset is after upper bound, using upper bound"
+                logging.info("Sunset is after upper bound, using upper bound")
 
         return self._sunrise < current_time < self._sunset
